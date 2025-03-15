@@ -14,10 +14,31 @@ interface Experience {
 
 const experiences: Experience[] = [
   {
+    company: 'DraftKings Inc.',
+    logo: '/images/companies/draftkings.png',
+    title: 'Software Engineer',
+    date: 'Aug 2024 - Present',
+    points: [
+      'Casino Platform - Backend Development',
+      'Building and maintaining core gaming infrastructure'
+    ]
+  },
+  {
+    company: 'Capital One',
+    logo: '/images/companies/capitalone.png',
+    title: 'Software Engineer Intern',
+    date: 'Sep 2023 - May 2024',
+    points: [
+      'Member of the AI Training Team',
+      'Developing and implementing machine learning solutions',
+      'Working on-site in McLean, Virginia'
+    ]
+  },
+  {
     company: 'Yext',
     logo: '/images/companies/yext.png',
     title: 'Software Engineer Intern',
-    date: 'May 2023 – Aug 2023',
+    date: 'May 2023 - Aug 2023',
     points: [
       'Worked with Listings, the premier product of the Yext platform that is responsible for synchronizing customer data across a vast network of publishers such as Google and Facebook.',
       'Configured a caching proxy and used it to tunnel FTP/SFTP requests to improve file exporting and receipt processing speeds by 30% and expanded publisher network for customers choosing to host their data in Europe.',
@@ -26,10 +47,21 @@ const experiences: Experience[] = [
     ]
   },
   {
+    company: 'Student-Initiated Courses (STICs)',
+    logo: '/images/companies/stic.png',
+    title: 'STIC Facilitator',
+    date: 'Aug 2022 - May 2023',
+    points: [
+      'Co-creator and instructor for CMSC398F: Introduction to Blockchain and Cryptocurrency',
+      'Developed comprehensive course curriculum and materials',
+      'Led classroom instruction and mentored students'
+    ]
+  },
+  {
     company: 'Appian',
     logo: '/images/companies/appian.png',
     title: 'Software Engineer Intern',
-    date: 'Jun 2022 – Aug 2022',
+    date: 'Jun 2022 - Aug 2022',
     points: [
       'On the cloud infrastructure team, I helped build and maintain the base layer of the Appian cloud platform.',
       'Developed an API that allows other teams to easily create new private servers, as well as control and isolate their connections to other private servers with a high level of granularity.',
@@ -38,10 +70,21 @@ const experiences: Experience[] = [
     ]
   },
   {
+    company: 'University of Maryland',
+    logo: '/images/companies/umd.png',
+    title: 'Teaching Assistant',
+    date: 'Sep 2021 - May 2022',
+    points: [
+      'Assisted professors with computer science course instruction',
+      'Provided one-on-one tutoring during office hours',
+      'Graded student assignments and provided detailed feedback'
+    ]
+  },
+  {
     company: 'University of Maryland Fellows',
     logo: '/images/companies/umd.png',
     title: 'Full Stack Developer',
-    date: 'May 2021 – May 2024',
+    date: 'May 2021 - May 2024',
     points: [
       'Developed a new administrative portal using React.js, enabling program managers to manage student applications and profiles more efficiently.',
       'Implemented Docker to streamline the development environment, reducing setup time for new employees by eliminating the need for manual installation of PHP, XAMPP, databases, Node.js, and npm packages.',

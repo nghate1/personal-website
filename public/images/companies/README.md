@@ -6,9 +6,12 @@ This directory contains the company logos for your experience section.
 
 Please add the following PNG files to this directory:
 
+- `draftkings.png` - DraftKings company logo
+- `capitalone.png` - Capital One company logo
 - `yext.png` - Yext company logo
 - `appian.png` - Appian company logo
 - `umd.png` - University of Maryland logo
+- `stic.png` - STIC logo
 
 ## Image Guidelines
 
