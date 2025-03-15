@@ -41,7 +41,7 @@ const Skills = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
-              className="bg-gray-800/50 rounded-lg p-8 border border-gray-700 backdrop-blur-sm"
+              className="bg-gray-800/50 rounded-lg p-8 border border-gray-700 backdrop-blur-sm hover:border-gray-600 transition-colors"
             >
               <h3 className="text-xl font-semibold mb-4 text-white">{category.title}</h3>
               <div className="flex flex-wrap gap-2">

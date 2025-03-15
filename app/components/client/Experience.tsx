@@ -116,10 +116,10 @@ const Experience = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-gray-800/50 rounded-lg p-8 border border-gray-700 backdrop-blur-sm"
+              className="bg-gray-800/50 rounded-lg p-8 border border-gray-700 backdrop-blur-sm hover:border-gray-600 transition-colors"
             >
               <div className="flex items-center gap-4 mb-4">
-                <div className="relative w-12 h-12 flex-shrink-0">
+                <div className="relative w-12 h-12 flex-shrink-0 bg-gray-700/30 rounded-lg p-2 backdrop-blur-sm border border-gray-600/30 ring-1 ring-gray-700/50">
                   <Image
                     src={exp.logo}
                     alt={`${exp.company} logo`}
