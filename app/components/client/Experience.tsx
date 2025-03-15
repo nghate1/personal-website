@@ -1,10 +1,21 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
-const experiences = [
+// Configure company logos and experience data
+interface Experience {
+  company: string;
+  logo: string;
+  title: string;
+  date: string;
+  points: string[];
+}
+
+const experiences: Experience[] = [
   {
     company: 'Yext',
+    logo: '/images/companies/yext.png',
     title: 'Software Engineer Intern',
     date: 'May 2023 – Aug 2023',
     points: [
@@ -16,6 +27,7 @@ const experiences = [
   },
   {
     company: 'Appian',
+    logo: '/images/companies/appian.png',
     title: 'Software Engineer Intern',
     date: 'Jun 2022 – Aug 2022',
     points: [
@@ -27,6 +39,7 @@ const experiences = [
   },
   {
     company: 'University of Maryland Fellows',
+    logo: '/images/companies/umd.png',
     title: 'Full Stack Developer',
     date: 'May 2021 – May 2024',
     points: [
@@ -41,14 +54,14 @@ const experiences = [
 
 const Experience = () => {
   return (
-    <section id="experience" className="py-20 bg-gray-50">
+    <section id="experience" className="py-20">
       <div className="container mx-auto px-6">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-3xl font-bold mb-12 text-center"
+          className="text-3xl font-bold mb-12 text-center text-white"
         >
           Professional Experience
         </motion.h2>
@@ -60,15 +73,29 @@ const Experience = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white rounded-lg p-8 shadow-sm"
+              className="bg-gray-800/50 rounded-lg p-8 border border-gray-700 backdrop-blur-sm"
             >
-              <h3 className="text-xl font-semibold">{exp.title}</h3>
-              <p className="text-lg text-gray-800 mt-1">{exp.company}</p>
-              <p className="text-gray-600 mt-1">{exp.date}</p>
+              <div className="flex items-center gap-4 mb-4">
+                <div className="relative w-12 h-12 flex-shrink-0">
+                  <Image
+                    src={exp.logo}
+                    alt={`${exp.company} logo`}
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 768px) 48px, 96px"
+                    priority
+                  />
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-white">{exp.title}</h3>
+                  <p className="text-lg text-gray-300">{exp.company}</p>
+                </div>
+              </div>
+              <p className="text-gray-400 mt-1">{exp.date}</p>
               <ul className="mt-4 space-y-3">
                 {exp.points.map((point, i) => (
-                  <li key={i} className="text-gray-600 flex items-start">
-                    <span className="text-gray-400 mr-2">•</span>
+                  <li key={i} className="text-gray-300 flex items-start">
+                    <span className="text-gray-500 mr-2">•</span>
                     <span>{point}</span>
                   </li>
                 ))}
