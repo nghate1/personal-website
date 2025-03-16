@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { useState, useEffect } from 'react';
 
 // Configure company logos and experience data
 interface Experience {
@@ -96,6 +97,19 @@ const experiences: Experience[] = [
 ];
 
 const Experience = () => {
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 640);
+    const handleResize = () => setIsMobile(window.innerWidth < 640);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const toggleExpand = (index: number) => {
+    setExpandedIndex(expandedIndex === index ? null : index);
+  };
   return (
     <section id="experience" className="py-12">
       <div className="container mx-auto px-6">
@@ -116,9 +130,12 @@ const Experience = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-gray-800/50 rounded-lg p-8 border border-gray-700 backdrop-blur-sm hover:border-gray-600 transition-colors"
+              className={`bg-gray-800/50 rounded-lg p-8 border border-gray-700 backdrop-blur-sm hover:border-gray-600 transition-colors ${isMobile ? 'cursor-pointer' : ''}`}
             >
-              <div className="flex items-center gap-4 mb-4">
+              <div 
+                className="flex items-center gap-4 mb-4"
+                onClick={() => toggleExpand(index)}
+              >
                 <div className="relative w-12 h-12 flex-shrink-0 bg-gray-700/30 rounded-lg p-2 backdrop-blur-sm border border-gray-600/30 ring-1 ring-gray-700/50">
                   <Image
                     src={exp.logo}
@@ -129,20 +146,49 @@ const Experience = () => {
                     priority
                   />
                 </div>
-                <div>
+                <div className="flex-grow">
                   <h3 className="text-xl font-semibold text-white">{exp.title}</h3>
                   <p className="text-lg text-gray-300">{exp.company}</p>
+                  <p className="text-sm text-gray-400">{exp.date}</p>
                 </div>
+                <motion.div 
+                  className="sm:hidden text-gray-400"
+                  animate={{ rotate: expandedIndex === index ? 180 : 0 }}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={2}
+                    stroke="currentColor"
+                    className="w-5 h-5"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                    />
+                  </svg>
+                </motion.div>
               </div>
-              <p className="text-gray-400 mt-1">{exp.date}</p>
-              <ul className="mt-4 space-y-3">
-                {exp.points.map((point, i) => (
-                  <li key={i} className="text-gray-300 flex items-start">
-                    <span className="text-gray-500 mr-2">•</span>
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
+              <motion.div
+                initial={false}
+                animate={{ 
+                  height: expandedIndex === index || !isMobile ? "auto" : 0,
+                  opacity: expandedIndex === index || !isMobile ? 1 : 0
+                }}
+                transition={{ duration: 0.3 }}
+                className="overflow-hidden"
+              >
+                <ul className="mt-4 space-y-3">
+                  {exp.points.map((point, i) => (
+                    <li key={i} className="text-gray-300 flex items-start">
+                      <span className="text-gray-500 mr-2">•</span>
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
             </motion.div>
           ))}
         </div>
